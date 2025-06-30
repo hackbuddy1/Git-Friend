@@ -4,9 +4,6 @@
 
 
 
-<p align="center">
-  <img src="./public/image.jpg" alt="Git-Friend Banner" />
-</p>
 
 
 
