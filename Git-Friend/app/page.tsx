@@ -253,27 +253,7 @@ export default function LandingPage() {
                 collaborative for developers of all skill levels.
               </motion.p>
 
-              {/* Product Hunt Badge */}
-              <motion.div 
-                className="mt-8 flex justify-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-              >
-                <a 
-                  href="https://www.producthunt.com/posts/git-friend?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-git&#0045;friend" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
-                  <img 
-                    src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=966948&theme=neutral&t=1747547887029" 
-                    alt="Git Friend - Make git simple again | Product Hunt" 
-                    style={{ width: "250px", height: "54px" }} 
-                    width="250" 
-                    height="54" 
-                  />
-                </a>
-              </motion.div>
+              
             </motion.div>
 
             {/* AI Chatbot Interface */}
@@ -1269,28 +1249,7 @@ export default function LandingPage() {
                 Git Friend is a tool that helps beginners to learn and understand git and github related issues and helps them to solve their issues through AI Chat.
                 This tool is also helps to generate README.md file for your projects which saves your time and effort.
                 </p>
-              <Link
-                href="https://github.com/krishn404/Git-Friend"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-muted-foreground/70 hover:text-foreground transition-all duration-300"
-              >
-                <svg
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  className="h-5 w-5 transition-transform duration-300 group-hover:scale-110"
-                >
-                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
-                  <path d="M9 18c-4.51 2-5-2-7-2"></path>
-                </svg>
-                <span className="text-sm hidden sm:inline">Star us on GitHub</span>
-              </Link>
+              
             </div>
 
             {/* Navigation */}

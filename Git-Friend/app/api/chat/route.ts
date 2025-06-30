@@ -3,10 +3,11 @@ import { Groq } from 'groq-sdk'
 
 // Initialize Groq
 const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY!,
+  apiKey: process.env.GROQ_API_KEY! || "your_actual_api_key_here",
 })
 
 export async function POST(req: Request) {
+  console.log("GROQ_API_KEY:", process.env.GROQ_API_KEY);
   try {
     const { messages } = await req.json()
 

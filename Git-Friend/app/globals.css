@@ -12,6 +12,7 @@
     --popover-foreground: 240 10% 3.9%;
     --primary: 262.1 83.3% 57.8%;
     --primary-foreground: 210 20% 98%;
+    --base-gradient-color: hsl(var(--primary));
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
     --muted: 240 4.8% 95.9%;
@@ -73,10 +74,13 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
+    border-width: 1px;
+    border-style: solid;
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
   }
 }
 
@@ -107,8 +111,9 @@
 .text-shimmer-wave > span:nth-child(odd) {
   background: linear-gradient(to right, var(--base-color), var(--base-gradient-color), var(--base-color));
   background-size: 200% auto;
-  background-clip: text;
+  
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   animation-direction: alternate-reverse;
 }
@@ -116,10 +121,14 @@
 .text-shimmer-wave > span:nth-child(even) {
   background: linear-gradient(to right, var(--base-gradient-color), var(--base-color), var(--base-gradient-color));
   background-size: 200% auto;
-  background-clip: text;
+ 
   -webkit-background-clip: text;
+   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation-direction: alternate;
+}
+.my-gradient-element {
+  background: linear-gradient(90deg, var(--base-gradient-color), #f0f0f0);
 }
 
 @layer utilities {
@@ -287,6 +296,7 @@
 
 .dark .theme-icon-container {
   background-color: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
 }
 
@@ -600,8 +610,8 @@ html {
 /* Glassmorphism effect */
 .glass-effect {
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
