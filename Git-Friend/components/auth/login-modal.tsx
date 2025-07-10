@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { useAuth } from "@/context/auth-context"
 import { X, GitBranch } from "lucide-react"
 import { motion } from "framer-motion"
-import { FcGoogle } from "react-icons/fc"
+// REMOVED: import { FcGoogle } from "react-icons/fc" // Remove Google icon import
 
 interface LoginModalProps {
   isOpen: boolean
@@ -14,20 +14,22 @@ interface LoginModalProps {
 }
 
 export function LoginModal({ isOpen, onClose, onSuccess }: LoginModalProps) {
-  const { signInWithGoogle } = useAuth()
-  const [isLoading, setIsLoading] = useState(false)
+  // REMOVED: signInWithGoogle from useAuth destructuring
+  const { } = useAuth() // No longer needing signInWithGoogle
+  // REMOVED: const [isLoading, setIsLoading] = useState(false) // No longer needed
 
-  const handleLogin = async () => {
-    setIsLoading(true)
-    try {
-      await signInWithGoogle()
-      onSuccess?.()
-    } catch (error) {
-      console.error("Error signing in:", error)
-    } finally {
-      setIsLoading(false)
-    }
-  }
+  // REMOVED: handleLogin function as it's Google-specific
+  // const handleLogin = async () => {
+  //   setIsLoading(true)
+  //   try {
+  //     await signInWithGoogle()
+  //     onSuccess?.()
+  //   } catch (error) {
+  //     console.error("Error signing in:", error)
+  //   } finally {
+  //     setIsLoading(false)
+  //   }
+  // }
 
   if (!isOpen) return null
 
@@ -51,6 +53,8 @@ export function LoginModal({ isOpen, onClose, onSuccess }: LoginModalProps) {
           <h2 className="text-2xl font-bold mb-2">Sign in to Git Friend</h2>
           <p className="text-muted-foreground mb-6">You need to be signed in to access this feature.</p>
 
+          {/* REMOVED: The Google Sign-In button */}
+          {/*
           <Button
             className="w-full flex items-center justify-center gap-2 py-6"
             onClick={handleLogin}
@@ -59,6 +63,13 @@ export function LoginModal({ isOpen, onClose, onSuccess }: LoginModalProps) {
             <FcGoogle className="h-5 w-5" />
             {isLoading ? "Signing in..." : "Sign in with Google"}
           </Button>
+          */}
+
+          {/* Optional: Add a message or a different button here if you want */}
+          <p className="text-sm text-muted-foreground mt-4">
+            No sign-in method available. Please contact support or return to the homepage.
+          </p>
+
         </div>
       </motion.div>
     </div>

@@ -2,9 +2,9 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { useAuth } from "@/context/auth-context"
+import { useAuth } from "@/context/auth-context" // Keep useAuth for signOut functionality
 import { LogOut } from "lucide-react"
-import { FcGoogle } from "react-icons/fc"
+// REMOVED: import { FcGoogle } from "react-icons/fc" // Remove Google icon import
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,17 +16,9 @@ import {
 import { UserProfileAvatar } from "@/components/ui/user-profile-avatar"
 
 export function UserAuthButton() {
-  const { user, loading, signInWithGoogle, signOut } = useAuth()
-  const [isSigningIn, setIsSigningIn] = useState(false)
-
-  const handleSignIn = async () => {
-    setIsSigningIn(true)
-    try {
-      await signInWithGoogle()
-    } finally {
-      setIsSigningIn(false)
-    }
-  }
+  const { user, loading, signOut } = useAuth() // Removed signInWithGoogle
+  // REMOVED: const [isSigningIn, setIsSigningIn] = useState(false) // No longer needed
+  // REMOVED: const handleSignIn = async () => { ... } // No longer needed
 
   if (loading) {
     return (
@@ -60,18 +52,7 @@ export function UserAuthButton() {
     )
   }
 
-  return (
-    <div className="flex items-center gap-2">
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={handleSignIn}
-        disabled={isSigningIn}
-        className="flex items-center gap-2"
-      >
-        <FcGoogle className="h-4 w-4" />
-        {isSigningIn ? "Signing in..." : "Sign in with Google"}
-      </Button>
-    </div>
-  )
+  // If user is not logged in AND not loading, we simply return null
+  // This will remove the button entirely from the header when not logged in.
+  return null;
 }
