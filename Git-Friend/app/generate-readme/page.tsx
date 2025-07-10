@@ -10,7 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent } from "@/components/ui/card"
 import {
   GitBranch,
-  Copy,
+  Copy, // Make sure Copy is imported (it already is!)
   Check,
   FileText,
   BookOpen,
@@ -71,7 +71,8 @@ export default function GenerateReadme() {
   // Example repositories
   const exampleRepos = [
     { name: "React", owner: "facebook/react", icon: <Code className="h-5 w-5" /> },
-    { name: "GitFriend", owner: "krishn404/Git-Friend", icon: <Zap className="h-5 w-5" /> },
+    // REPLACED THIS LINE: { name: "GitFriend", owner: "krishn404/Git-Friend", icon: <Zap className="h-5 w-5" /> },
+    { name: "Contextual Clipboard", owner: "hackbuddy1/Contextual-Clipboard", icon: <Copy className="h-5 w-5" /> },
     { name: "TailwindCSS", owner: "tailwindlabs/tailwindcss", icon: <Sparkles className="h-5 w-5" /> },
   ]
 
@@ -669,34 +670,42 @@ export default function GenerateReadme() {
                                     />
                                   ),
                                   h3: ({ node, ...props }) => <h3 {...props} className="text-xl font-bold mt-5 mb-2" />,
-                                  code: ({ node, inline, className, ...props }) =>
+                                  code: ({
+                                    inline,
+                                    className,
+                                    ...props
+                                  }: {
+                                    inline?: boolean
+                                    className?: string
+                                    [key: string]: any
+                                  }) =>
                                     inline ? (
                                       <code {...props} className="px-1 py-0.5 bg-gray-100 rounded text-gray-800" />
                                     ) : (
                                       <code {...props} className="block overflow-x-auto text-gray-800" />
                                     ),
-                                  pre: ({ node, ...props }) => (
+                                  pre: (props) => (
                                     <pre
                                       {...props}
                                       className="p-4 bg-gray-100 rounded-md overflow-x-auto my-4 border border-gray-200 text-gray-800"
                                     />
                                   ),
-                                  hr: ({ node, ...props }) => <hr {...props} className="my-6 border-gray-300" />,
-                                  table: ({ node, ...props }) => (
+                                  hr: (props) => <hr {...props} className="my-6 border-gray-300" />,
+                                  table: (props) => (
                                     <div className="overflow-x-auto my-6">
                                       <table {...props} className="min-w-full divide-y divide-gray-300" />
                                     </div>
                                   ),
-                                  th: ({ node, ...props }) => (
+                                  th: (props) => (
                                     <th {...props} className="px-4 py-2 bg-gray-100 font-medium text-left" />
                                   ),
-                                  td: ({ node, ...props }) => (
+                                  td: (props) => (
                                     <td {...props} className="px-4 py-2 border-t border-gray-300" />
                                   ),
-                                  ul: ({ node, ...props }) => <ul {...props} className="list-disc pl-5 my-4" />,
-                                  ol: ({ node, ...props }) => <ol {...props} className="list-decimal pl-5 my-4" />,
-                                  li: ({ node, ...props }) => <li {...props} className="my-1" />,
-                                  blockquote: ({ node, ...props }) => (
+                                  ul: (props) => <ul {...props} className="list-disc pl-5 my-4" />,
+                                  ol: (props) => <ol {...props} className="list-decimal pl-5 my-4" />,
+                                  li: (props) => <li {...props} className="my-1" />,
+                                  blockquote: (props) => (
                                     <blockquote
                                       {...props}
                                       className="pl-4 border-l-4 border-gray-200 text-gray-700 my-4 italic"
@@ -795,6 +804,7 @@ export default function GenerateReadme() {
                       setIsGenerating(false)
                     }}
                     className="absolute top-4 right-4 text-[hsl(var(--readme-text-muted))] hover:text-[hsl(var(--readme-text))] transition-colors"
+                    title="Close"
                   >
                     <X className="h-5 w-5" />
                   </button>
