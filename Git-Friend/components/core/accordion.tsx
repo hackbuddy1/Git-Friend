@@ -34,7 +34,7 @@ function AccordionProvider({
 }: AccordionProviderProps) {
   const [internalExpandedValue, setInternalExpandedValue] = useState<React.Key | null>(externalExpandedValue ?? null)
 
-  // Use useEffect to handle external value changes after hydration
+  
   useEffect(() => {
     if (externalExpandedValue !== undefined) {
       setInternalExpandedValue(externalExpandedValue)

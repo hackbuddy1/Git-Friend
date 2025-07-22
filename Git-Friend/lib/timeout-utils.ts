@@ -1,9 +1,9 @@
 /**
- * Executes a promise with a timeout
- * @param promise The promise to execute
- * @param timeoutMs Timeout in milliseconds
- * @param errorMessage Custom error message for timeout
- * @returns Promise result or throws error on timeout
+ 
+ * @param promise 
+ * @param timeoutMs 
+ * @param errorMessage 
+ * @returns 
  */
 export async function withTimeout<T>(
   promise: Promise<T>,
@@ -28,11 +28,11 @@ export async function withTimeout<T>(
 }
 
 /**
- * Safely executes a function that might time out
- * @param fn Function to execute
- * @param fallback Fallback value if function times out
- * @param timeoutMs Timeout in milliseconds
- * @returns Result of function or fallback value
+t
+ * @param fn 
+ * @param fallback 
+ * @param timeoutMs 
+ * @returns 
  */
 export async function executeSafely<T>(fn: () => Promise<T>, fallback: T, timeoutMs = 10000): Promise<T> {
   try {

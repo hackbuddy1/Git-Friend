@@ -51,10 +51,10 @@ export default function LandingPage() {
   const springY = useSpring(y, { stiffness: 100, damping: 30 })
   const springOpacity = useSpring(opacity, { stiffness: 100, damping: 30 })
 
-  // Scroll-driven animations for How It Works section
+ 
   const sectionScale = useTransform(howItWorksScrollProgress, [0, 0.2], [0.95, 1])
   const sectionOpacity = useTransform(howItWorksScrollProgress, [0, 0.2], [0.5, 1])
-  // State for interactive elements in the How It Works section
+
   const [hoveredCard, setHoveredCard] = useState<number | null>(null)
 
   const fadeIn = {
@@ -89,7 +89,7 @@ export default function LandingPage() {
     },
   }
 
-  // Define the bento grid cards for the How It Works section
+  
   const bentoCards = [
     {
       id: 1,
@@ -166,25 +166,25 @@ export default function LandingPage() {
     },
   ]
 
-  // Add state for controlling animation sequence
+  
   const [showWelcome, setShowWelcome] = useState(true)
   const [showUserPrompt, setShowUserPrompt] = useState(false)
   const [showTyping, setShowTyping] = useState(false)
   const [showResponse, setShowResponse] = useState(false)
 
-  // Add useEffect for animation sequence
+  
   useEffect(() => {
     const sequence = async () => {
-      // Reset all states
+     
       setShowWelcome(false)
       setShowUserPrompt(false)
       setShowTyping(false)
       setShowResponse(false)
 
-      // Wait a moment before starting
+     
       await new Promise((resolve) => setTimeout(resolve, 1000))
 
-      // Start sequence
+      
       setShowWelcome(true)
       await new Promise((resolve) => setTimeout(resolve, 2000))
 
@@ -198,10 +198,10 @@ export default function LandingPage() {
       await new Promise((resolve) => setTimeout(resolve, 4000))
     }
 
-    // Run sequence and repeat
+    
     const runSequence = () => {
       sequence()
-      const interval = setInterval(sequence, 11500) // Total duration of sequence
+      const interval = setInterval(sequence, 11500) 
       return () => clearInterval(interval)
     }
 
@@ -210,17 +210,17 @@ export default function LandingPage() {
 
   return (
     <div className="flex min-h-screen flex-col relative overflow-hidden">
-      {/* Noise overlay */}
+      
       <div className="fixed inset-0 z-50 pointer-events-none opacity-[0.015] bg-repeat bg-noise"></div>
 
-      {/* Animated beams background */}
+      
       <AnimatedBeams className="z-0" />
 
-      {/* Modern Navbar */}
+      
       <Navbar transparent={true} />
 
       <main className="flex-1 pt-16">
-        {/* Hero Section */}
+        
         <section ref={heroRef} className="relative overflow-hidden py-20 md:py-32">
           <motion.div
             className="absolute inset-0 -z-10"
@@ -256,7 +256,7 @@ export default function LandingPage() {
               
             </motion.div>
 
-            {/* AI Chatbot Interface */}
+            
             <motion.div
               className="mt-12 mx-auto max-w-3xl"
               initial={{ opacity: 0, y: 20 }}
@@ -264,10 +264,10 @@ export default function LandingPage() {
               transition={{ delay: 0.3, duration: 0.6 }}
             >
               <div className="rounded-xl border bg-card shadow-xl overflow-hidden">
-                {/* Chat Header */}
+                
                 <div className="flex items-center justify-between border-b p-6 bg-muted/30"></div>
 
-                {/* Chat Messages */}
+                
                 <div className="p-6 h-[500px] overflow-y-auto bg-muted/10">
                   <AnimatePresence>
                     {showWelcome && (
@@ -380,17 +380,17 @@ export default function LandingPage() {
         </section>
 
         <section id="how-it-works" className="py-28 md:py-36 relative overflow-hidden" ref={howItWorksRef}>
-          {/* Background elements */}
+          
           <div className="absolute inset-0 -z-10 bg-grid-pattern-enhanced opacity-5"></div>
           <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background/80 to-background/20"></div>
 
-          {/* Light theme specific background */}
+          
           <div className="absolute inset-0 -z-10 light-theme-bg opacity-10 dark:opacity-0"></div>
 
-          {/* Dark theme specific background */}
+         
           <div className="absolute inset-0 -z-10 dark:bg-black/50 opacity-0 dark:opacity-70"></div>
 
-          {/* Animated background elements */}
+          
           <motion.div
             className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-primary/5 blur-3xl"
             animate={
@@ -428,7 +428,7 @@ export default function LandingPage() {
 
           <div className="hidden dark:block" suppressHydrationWarning>
             {Array.from({ length: 50 }).map((_, i) => {
-              // Use fixed values based on index
+              
               const width = 1 + (i % 3) * 0.5;
               const height = 1 + ((i + 1) % 3) * 0.5;
               const top = (i * 2) % 100;
@@ -455,7 +455,7 @@ export default function LandingPage() {
             })}
           </div>
 
-          {/* Emoji animations */}
+          
           {["😊", "👍", "❤️", "🎯", "🌟"].map((emoji, i) => (
             <motion.div
               key={i}
@@ -506,7 +506,7 @@ export default function LandingPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
               {bentoCards.map((card, index) => {
-                // Determine if this is the "Coming Soon" card that spans full width
+                
                 const isFullWidth = card.comingSoon
 
                 return (
@@ -533,7 +533,7 @@ export default function LandingPage() {
           dark:bg-black/30 dark:backdrop-blur-sm
         `}
                       >
-                        {/* Background gradient with enhanced animation */}
+                        
                         <motion.div
                           className={`
             absolute inset-0 opacity-30 transition-opacity duration-500
@@ -549,7 +549,7 @@ export default function LandingPage() {
                           transition={{ duration: 5, repeat: Number.POSITIVE_INFINITY }}
                         />
 
-                        {/* Ambient glow effect with enhanced animation */}
+                        
                         <motion.div
                           className={`
             absolute -inset-[100px] opacity-10 dark:opacity-5
@@ -562,20 +562,20 @@ export default function LandingPage() {
                           transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
                         />
 
-                        {/* Content container */}
+                        
                         <div
                           className={`
             relative z-10 p-6 md:p-8 h-full flex ${isFullWidth ? "flex-col md:flex-row items-center" : "flex-col"}
           `}
                         >
-                          {/* Icon with connections - enhanced animations */}
+                          
                           <div
                             className={`
               relative flex justify-center items-center 
               ${isFullWidth ? "h-40 w-full md:w-1/3 mb-6 md:mb-0" : "h-40 mb-6"}
             `}
                           >
-                            {/* Central icon with improved animation */}
+                            
                             <motion.div
                               className={`
                   absolute w-20 h-20 rounded-full flex items-center justify-center z-10
@@ -611,7 +611,7 @@ export default function LandingPage() {
                               </motion.div>
                             </motion.div>
 
-                            {/* Git and GitHub Helper - Enhanced glowing line animations */}
+                            
                             {card.pattern === "linear" && (
                               <>
                                 <motion.div
@@ -693,10 +693,10 @@ export default function LandingPage() {
                               </>
                             )}
 
-                            {/* Repo Generator - Text generation animation */}
+                            
                             {card.pattern === "hexagon" && (
                               <>
-                                {/* Animated text generation effect */}
+                                
                                 <div className="absolute bottom-0 left-0 right-0 flex justify-center">
                                   <motion.div
                                     className="text-xs font-mono bg-black/20 dark:bg-white/10 rounded px-2 py-1 text-primary"
@@ -777,13 +777,13 @@ export default function LandingPage() {
                               </>
                             )}
 
-                            {/* AI Chat - Visual representation of user prompts and AI responses */}
+                            
                             {card.pattern === "radial" && (
                               <>
-                                {/* Chat bubbles animation */}
+                                
                                 <div className="absolute inset-0 flex items-center justify-center">
                                   <div className="relative w-full h-full">
-                                    {/* User message */}
+                                    
                                     <motion.div
                                       className="absolute right-5 top-5 bg-primary text-white text-xs rounded-xl rounded-tr-sm px-2 py-1 max-w-[80px]"
                                       initial={{ opacity: 0, y: 10, scale: 0.8 }}
@@ -799,7 +799,7 @@ export default function LandingPage() {
                                       How do I merge?
                                     </motion.div>
 
-                                    {/* AI response */}
+                                    
                                     <motion.div
                                       className="absolute left-5 bottom-5 bg-card dark:bg-black/60 border border-primary/20 text-xs rounded-xl rounded-tl-sm px-2 py-1 max-w-[100px]"
                                       initial={{ opacity: 0, y: 10, scale: 0.8 }}
@@ -876,7 +876,7 @@ export default function LandingPage() {
                               </>
                             )}
 
-                            {/* GitHub Emoji Generator - Enhanced emoji orbit animation */}
+                            
                             {card.pattern === "orbit" && (
                               <>
                                 <motion.div
@@ -891,7 +891,7 @@ export default function LandingPage() {
                                   transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
                                 />
 
-                                {/* Orbiting emojis with enhanced animation */}
+                                
                                 {[0, 72, 144, 216, 288].map((angle, i) => (
                                   <motion.div
                                     key={i}
@@ -1031,7 +1031,7 @@ export default function LandingPage() {
                                   }}
                                 />
 
-                                {/* Animated elements */}
+                                
                                 {[
                                   { top: "20%", left: "30%", icon: card.nodeIcon, delay: 0 },
                                   { top: "70%", right: "30%", icon: card.secondaryIcon || card.nodeIcon, delay: 1 },
@@ -1100,7 +1100,7 @@ export default function LandingPage() {
         </section>
 
         <section className="py-28 md:py-36 relative overflow-hidden">
-          {/* Background elements */}
+          
           <div className="absolute inset-0 -z-10 bg-grid-pattern-enhanced opacity-5"></div>
           <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background/80 to-background/20"></div>
 
@@ -1112,7 +1112,7 @@ export default function LandingPage() {
             className="container mx-auto"
           >
             <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-12">
-              {/* LEFT SIDE - Heading & Description */}
+              
               <div className="md:w-5/12 space-y-5">
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium">
                   <HelpCircle className="w-4 h-4" />
@@ -1130,7 +1130,7 @@ export default function LandingPage() {
                 </p>
               </div>
 
-              {/* RIGHT SIDE - Accordion */}
+              
               <Accordion
                 className="flex w-full flex-col max-w-3xl mx-auto md:mx-0 md:w-7/12"
                 type="single"
@@ -1239,7 +1239,7 @@ export default function LandingPage() {
         <div className="absolute inset-0 -z-10 bg-grid-pattern opacity-[0.02]"></div>
         <div className="container">
           <div className="flex flex-col md:flex-row md:justify-between items-center text-center md:text-left gap-12">
-            {/* Branding */}
+            
             <div className="flex flex-col items-center md:items-start gap-4">
               <div className="flex items-center gap-2">
                 <GitBranch className="h-5 w-5 text-primary/80" />
@@ -1252,7 +1252,7 @@ export default function LandingPage() {
               
             </div>
 
-            {/* Navigation */}
+            
             <div className="flex flex-col items-center md:items-end gap-4">
               
               <p className="text-xs text-muted-foreground/60 mt-2">

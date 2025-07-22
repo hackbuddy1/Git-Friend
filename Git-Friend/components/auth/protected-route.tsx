@@ -18,7 +18,7 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
   const pathname = usePathname()
 
   useEffect(() => {
-    // Only show the login modal if the user is not logged in and we're done loading
+    
     if (!loading && !user) {
       setShowLoginModal(true)
     }
@@ -33,7 +33,7 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
     router.push("/")
   }
 
-  // Show loading state while checking authentication
+  
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center">

@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { useAuth } from "@/context/auth-context"
 import { LogOut } from "lucide-react"
-// REMOVED: import { FcGoogle } from "react-icons/fc"
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,9 +17,7 @@ import { UserProfileAvatar } from "@/components/ui/user-profile-avatar"
 
 export function UserAuthButton() {
   const { user, loading, signOut } = useAuth()
-  // REMOVED: const [isSigningIn, setIsSigningIn] = useState(false) // No longer needed
-
-  // REMOVED: handleSignIn function as it's Google-specific
+  
 
   if (loading) {
     return (
@@ -53,6 +51,6 @@ export function UserAuthButton() {
     )
   }
 
-  // If user is not logged in AND not loading, return null to remove the button.
+  
   return null
 }
